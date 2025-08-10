@@ -2,7 +2,7 @@ import os
 from glob import glob
 from setuptools import setup
 
-package_name = "ardupilot_cartographer"
+package_name = "ardupilot_ros"
 
 setup(
     name=package_name,
@@ -36,8 +36,6 @@ setup(
     license="GPLv3+",
     tests_require=["pytest"],
     entry_points={
-        "console_scripts": [
-            "joy_controller=ardupilot_cartographer.joy_controller:main"
-        ],
+        "console_scripts": ["joy_controller=ardupilot_ros.joy_controller:main"],
     },
 )

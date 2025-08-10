@@ -23,8 +23,7 @@ def generate_launch_description():
         parameters=[{"use_sim_time": LaunchConfiguration("use_sim_time")}],
         arguments=[
             "-configuration_directory",
-            FindPackageShare("ardupilot_cartographer").find("ardupilot_cartographer")
-            + "/config",
+            FindPackageShare("ardupilot_ros").find("ardupilot_ros") + "/config",
             "-configuration_basename",
             "cartographer.lua",
         ],
@@ -65,9 +64,7 @@ def generate_launch_description():
             "-d",
             str(
                 Path(
-                    FindPackageShare("ardupilot_cartographer").find(
-                        "ardupilot_cartographer"
-                    ),
+                    FindPackageShare("ardupilot_ros").find("ardupilot_ros"),
                     "rviz",
                     "cartographer.rviz",
                 )
