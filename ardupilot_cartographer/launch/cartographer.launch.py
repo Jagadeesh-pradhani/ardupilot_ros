@@ -30,8 +30,8 @@ def generate_launch_description():
         ],
         output="screen",
         remappings=[
-            ("/imu", "/imu"),
-            ("/odom", "/odometry"),
+            ("/imu", "/iris_0/imu"),
+            ("/odom", "/iris_0/odom"),
         ],
     )
 
