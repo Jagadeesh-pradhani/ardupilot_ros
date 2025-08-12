@@ -9,16 +9,17 @@ from launch_ros.actions import SetRemap
 from launch_ros.actions import Node
 from launch_ros.substitutions import FindPackageShare
 from pathlib import Path
-
+from launch_ros.actions import PushRosNamespace
 """Generate a launch description for the navigation example."""
 
 
 def generate_launch_description():
     # Navigation
+
+
     navigation = GroupAction(
         actions=[
-            # TODO: enable when navigation2 supports twist stamped
-            # SetRemap(src="/cmd_vel", dst="/ap/cmd_vel"),
+
             IncludeLaunchDescription(
                 PythonLaunchDescriptionSource(
                     str(
@@ -33,9 +34,7 @@ def generate_launch_description():
                     "use_sim_time": "true",
                     "params_file": FindPackageShare("ardupilot_cartographer").find(
                         "ardupilot_cartographer"
-                    )
-                    + "/config"
-                    + "/navigation.yaml",
+                    ) + "/config/navigation.yaml",
                 }.items(),
             ),
         ]
@@ -46,8 +45,9 @@ def generate_launch_description():
     twist_stamper = Node(
         package="twist_stamper",
         executable="twist_stamper",
+        # namespace="iris_0",
         parameters=[
-            {"frame_id": "base_link_0"},
+            {"frame_id": "iris_0/base_link"},
         ],
         remappings=[
             ("cmd_vel_in", "cmd_vel"),
@@ -92,6 +92,7 @@ def generate_launch_description():
             DeclareLaunchArgument(
                 "rviz", default_value="true", description="Open RViz."
             ),
+
             navigation,
             twist_stamper,
             rviz,

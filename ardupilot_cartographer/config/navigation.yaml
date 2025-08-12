@@ -2,7 +2,7 @@ bt_navigator:
   ros__parameters:
     use_sim_time: &default_use_sim_time True
     global_frame: map
-    robot_base_frame: base_link_0
+    robot_base_frame: iris_0/base_link
     plugin_lib_names:
       - nav2_compute_path_to_pose_action_bt_node
       - nav2_compute_path_through_poses_action_bt_node
@@ -93,7 +93,7 @@ global_costmap:
   global_costmap:
     ros__parameters:
       global_frame: map
-      robot_base_frame: base_link_0
+      robot_base_frame: iris_0/base_link
       use_sim_time: *default_use_sim_time
       robot_radius: 0.35
       resolution: 0.05
@@ -108,7 +108,7 @@ global_costmap:
         enabled: True
         observation_sources: scan
         scan:
-          topic: /base_scan_0/scan
+          topic: /iris_0/scan
           clearing: True
           marking: True
           data_type: "LaserScan"
@@ -119,7 +119,7 @@ local_costmap:
   local_costmap:
     ros__parameters:
       global_frame: iris_0/odom
-      robot_base_frame: base_link_0
+      robot_base_frame: iris_0/base_link
       use_sim_time: *default_use_sim_time
       rolling_window: true
       width: 5
@@ -132,7 +132,7 @@ local_costmap:
         plugin: "nav2_costmap_2d::VoxelLayer"
         observation_sources: scan
         scan:
-          topic: /base_scan_0/scan
+          topic: /iris_0/scan
           max_obstacle_height: 2.0
           clearing: True
           marking: True
@@ -160,7 +160,7 @@ behavior_server:
   ros__parameters:
     local_frame: iris_0/odom
     global_frame: map
-    robot_base_frame: base_link_0
+    robot_base_frame: iris_0/base_link
     use_sim_time: *default_use_sim_time
     enable_stamped_cmd_vel: True
     behavior_plugins: ["spin", "backup", "drive_on_heading", "wait"]
