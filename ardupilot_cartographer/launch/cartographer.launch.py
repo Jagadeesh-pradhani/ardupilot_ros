@@ -32,6 +32,7 @@ def generate_launch_description():
         remappings=[
             ("/imu", "/iris_0/imu"),
             ("/odom", "/iris_0/odom"),
+            ("/scan", "/base_scan_0/scan"),
         ],
     )
 

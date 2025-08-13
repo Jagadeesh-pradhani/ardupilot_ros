@@ -11,7 +11,7 @@ def generate_launch_description():
         package="twist_stamper",
         executable="twist_stamper",
         parameters=[
-            {"frame_id": "base_link"},
+            {"frame_id": "base_link_0"},
         ],
         remappings=[
             ("cmd_vel_in", "cmd_vel"),
